@@ -1,0 +1,112 @@
+\usepackage{stackengine}
+\usepackage{scalerel}
+
+\newcommand\dangersign[1][2ex]{%
+  \renewcommand\stacktype{L}%
+  \scaleto{\stackon[1.3pt]{\color{red}$\triangle$}{\tiny\bfseries !}}{#1}%
+}
+
+\newenvironment{remark}{\par\vspace{10pt}\small % Vertical white space above the remark and smaller font size
+  \begin{list}{}{
+    \leftmargin=35pt % Indentation on the left
+    \rightmargin=25pt
+  }\item\ignorespaces % Indentation on the right
+  \makebox[-2.5pt]{%
+    \begin{tikzpicture}[overlay]
+      \node[inner sep=2pt,outer sep=0pt] at 
+      (-15pt, 0pt)
+      {\dangersign[3.5ex]};
+    \end{tikzpicture}
+  }
+  \advance\baselineskip -1pt}{\end{list}\vskip5pt%
+} %
+
+
+%-----------------
+%	THEOREM STYLES
+%-----------------
+\definecolor{azulunb}{cmyk}{1, 0.65, 0, 0.35}
+\definecolor{verdeunb}{cmyk}{ 1, 0, 1, 0.2}
+
+% Boxed/framed environments
+\newtheoremstyle{bluenumbox}% Theorem style name
+	{0pt}% Space above
+	{0pt}% Space below
+	{\normalfont}% Body font
+	{}% Indent amount
+	{\small\bf\sffamily\color{azulunb}}% Theorem head font
+	{\;}% Punctuation after theorem head
+	{0.25em}% Space after theorem head
+	{\small\sffamily\color{azulunb}\thmname{#1}\nobreakspace\thmnumber{#2}\thmnote{\nobreakspace\sffamily\bfseries\color{black}---\nobreakspace#3.}} 
+	% Optional theorem note
+
+\newtheoremstyle{blacknumex}% Theorem style name
+	{5pt}% Space above
+	{5pt}% Space below
+	{\normalfont}% Body font
+	{} % Indent amount
+	{\small\bf\sffamily\color{verdeunb}}% Theorem head font
+	{\;}% Punctuation after theorem head
+	{0.25em}% Space after theorem head
+	{\small\sffamily{\tiny\ensuremath{\blacksquare}}%
+		\nobreakspace\thmname{#1}\nobreakspace
+		\thmnumber{#2}% Theorem text (e.g. Theorem 2.1)
+		\thmnote{\nobreakspace\sffamily\bfseries---\nobreakspace#3.}
+	}% Optional theorem note
+\makeatother
+
+% Defines the theorem text style for each type of theorem to one of the two styles above
+
+\theoremstyle{bluenumbox}
+	\newtheorem{exerciseT}{Exercício}[section]
+
+\theoremstyle{blacknumex}
+	\newtheorem{exampleT}{Exemplo}[section]
+
+%------------------------------
+%	DEFINITION OF COLORED BOXES
+%------------------------------
+
+\RequirePackage[framemethod=default]{mdframed} 
+% Required for creating the theorem, definition, exercise and corollary boxes
+
+% Exercise box	  
+\newmdenv[
+	skipabove=7pt,
+	skipbelow=7pt,
+	rightline=false,
+	leftline=true,
+	topline=false,
+	bottomline=false,
+	backgroundcolor=azulunb!10,
+	linecolor=azulunb,
+	innerleftmargin=5pt,
+	innerrightmargin=5pt,
+	innertopmargin=5pt,
+	innerbottommargin=5pt,
+	leftmargin=0cm,
+	rightmargin=0cm,
+	linewidth=4pt]{eBox}	
+
+% Creates an environment for each type of theorem and assigns it a theorem text style from the "Theorem Styles" section above and a colored box from above
+\newenvironment{exercicio}
+    {\begin{eBox}\begin{exerciseT}}{
+	    \hfill{\color{azulunb}\tiny\ensuremath{\blacksquare}}
+	    \end{exerciseT}\end{eBox}
+    }	
+%
+\newenvironment{exemplo}
+    {\begin{exampleT}}
+    {\hfill{\color{verdeunb}\tiny\ensuremath{\blacksquare}}\end{exampleT}}	
+%
+
+
+% As linhas abaixo tiram os bad breaks dos warnings. Comente-as se quiser saber se e onde os bad breaks ocorrem
+\usepackage{silence}
+  \WarningFilter{mdframed}{You got a bad break}
+  \makeatletter
+  \mdf@PackageWarning{You got a bad break\MessageBreak
+    because the last split box is empty\MessageBreak
+    You have to change the settings}
+  \makeatother
+%

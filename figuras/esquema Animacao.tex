@@ -1,0 +1,104 @@
+\begin{tikzpicture}
+    \draw [dashdotted]
+        % etapa 1
+        (0, 0) node {\includegraphics{Lyn1}}
+        (0, -1.5) node {\includegraphics{fundo}}
+        
+        % etapa 2
+        (2, 0) node {\includegraphics{Lyn1}}
+        (2, -1.5) node {\includegraphics{fundo}}
+        ++ (-0.5, 0.5) rectangle ++ (1, -1)
+        
+        % etapa 3
+        (4, 0) node {\includegraphics{Lyn1}}
+        (4, -1.5) node {\includegraphics{Lyn2}}
+        
+        % etapa 4
+        (6, 0) node {\includegraphics{fundo}}
+        ++ (-0.5, 0.5) rectangle ++ (1, -1)
+        (6, -1.5) node {\includegraphics{Lyn2}}
+        
+        % etapa 5
+        (8, 0) node {\includegraphics{fundo}}
+        (8, -1.5) node {\includegraphics{Lyn2}}
+    ;
+    
+    \def\eye{
+              [fill=white]circle (0.2 and 0.1);
+        \fill [gray!85] circle (0.1);
+    }
+    \draw
+        % frames
+        (-1, 0) node {\sf\textbf{0}}
+        (-1.5, -0.75) --++ (10.5,0)
+        (-1, -1.5) node {\sf\textbf{1}}
+        
+        % legendas
+        (0, 0.5) node [above] {I}
+        (2, 0.5) node [above] {II}
+        (4, 0.5) node [above] {III}
+        (6, 0.5) node [above] {IV}
+        (8, 0.5) node [above] {V}
+    ;
+    
+    % exibição do frame
+    \def\eye{
+        arc (30:150:0.2)
+        arc (30:150:-0.2)
+    }
+    \def\pupil{
+        circle (0.09)
+    }
+    \draw
+        (0.7, .55) \eye
+        (2.7, .55) \eye
+        (4.7, -0.95) \eye
+        (6.7, -0.95) \eye
+        (8.7, -0.95) \eye
+    ;
+    \fill
+        (0.53, .55) \pupil
+        (2.53, .55) \pupil
+        (4.53, -0.95) \pupil
+        (6.53, -0.95) \pupil
+        (8.53, -0.95) \pupil
+    ;
+    
+    % descrições
+    \draw
+        (0, -2.5) node {\small\sf
+            \begin{minipage}{2cm}\centering
+                Função é\\
+                chamada
+            \end{minipage}
+        }
+        
+        (2, -2.5) node {\small\sf
+            \begin{minipage}{2cm}\centering
+                Guarda\\
+                o fundo
+            \end{minipage}
+        }
+        
+        (4, -2.5) node {\small\sf
+            \begin{minipage}{2cm}\centering
+                Atualiza pose,\\
+                troca o frame
+            \end{minipage}
+        }
+        
+        (6, -2.5) node {\small\sf
+            \begin{minipage}{2cm}\centering
+                Imprime\\
+                o fundo
+            \end{minipage}
+        }
+        
+        (8, -2.5) node {\small\sf
+            \begin{minipage}{2cm}\centering
+                Retorna
+            \end{minipage}
+        }
+    ;
+    
+\end{tikzpicture}

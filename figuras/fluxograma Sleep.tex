@@ -1,0 +1,63 @@
+\begin{tikzpicture}[>=latex', thick]
+    \node [draw,
+        minimum width=3.5em,
+        minimum height=2em,
+        rounded corners=5
+    ] (inicio) at (0,0) {Início};
+    
+    \node [draw,
+        minimum height=3.25em,
+        right=1 of inicio
+    ] (t0) {
+        \begin{minipage}{2cm}\centering
+            Registra o\\
+            tempo atual,\\
+            $t_0$
+        \end{minipage}
+    };
+    
+    \node [draw,
+        minimum height=1em,
+        right=1 of t0
+    ] (t0+a0) {
+        \begin{minipage}{2cm}\centering
+            Calcula $t=t_0+t_\text{Sleep}$ 
+        \end{minipage}
+    };
+    
+    \node [draw,
+        minimum height=1em,
+        below=1 of t0+a0
+    ] (t0') {
+        \begin{minipage}{2cm}\centering
+            Registra o tempo atual, $t_0'$ 
+        \end{minipage}
+    };
+    
+    \node [draw,
+        diamond,
+        minimum height=1em,
+        right=1 of t0'
+    ] (decisão) {
+        \begin{minipage}{2cm}\centering
+            $t_0'<t?$
+        \end{minipage}
+    };
+    
+    \node [draw,
+        rounded corners=5,
+        minimum width=2.5em,
+        minimum height=2em,
+        above=1 of decisão
+    ] (fim) {Fim};
+    
+    % arrow hell
+    \draw[->] (inicio) -- (t0);
+    \draw[->] (t0) -- (t0+a0);
+    \draw[->] (t0+a0) -- (t0');
+    \draw[->] (t0') -- (decisão);
+    \draw[->] (decisão) -- node [midway, fill=white, inner sep=1.5] {não$\,\,$} (fim);
+    \draw[->] (decisão.south) --++ (0,-0.5) -| (t0'.south);
+    \draw (decisão.south) ++ (0,-0.5) ++ (-1.75, 0)
+    node [above] {sim$\,\,$};
+\end{tikzpicture}

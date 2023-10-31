@@ -1,0 +1,22 @@
+\begin{tikzpicture}[>=latex, thick]
+    \fill [gray!25] (4, 0) rectangle +(0.4, -0.4);
+    \fill [gray!75] (4, -0.4) rectangle +(0.4, -0.4);
+    
+    \foreach \i in {0, -0.4, -0.8} {
+        \draw (0, \i) --++ (8, 0);
+    }
+    \foreach \i in {0, 0.4, ..., 8} {
+        \draw (\i, 0) --++ (0, -1);
+    }
+    \draw [<->] (0, -2) --++ (8,0) node [midway, fill=white] {320};
+    
+    \draw [<-] 
+        (0, 0) --++ (-0.25, 0.25) node [above] {Inicial}
+    ;
+    \draw [<-] 
+        (4, 0) --++ (-0.25, 0.25) node [above] {Inicial + $x$}
+    ;
+    \draw [<-] 
+        (4,-0.4) --++ (-0.7,-0.7) node [below] {Inicial + $x$ + 320}
+    ;
+\end{tikzpicture}

@@ -1,0 +1,49 @@
+\begin{tikzpicture}[>=latex', thick]
+    \node [draw,
+        minimum width=3.5em,
+        minimum height=2em,
+        rounded corners=5
+    ] (inicio) at (0,0) {Início};
+    
+    \node [draw,
+        minimum height=3.25em,
+        right=1 of inicio
+    ] (RGB) {
+        \begin{minipage}{2cm}\centering
+            Calcula\\
+            $R$, $G$ e $B$
+        \end{minipage}
+    };
+    
+    \node [draw,
+        minimum height=3.25em,
+        right=1 of RGB
+    ] (RGBc) {
+        \begin{minipage}{2cm}\centering
+            Obtém\\
+            $R_c$, $G_c$ e $B_c$
+        \end{minipage}
+    };
+    
+    \node [draw,
+        minimum height=3.25em,
+        right=1 of RGBc
+    ] (bytec) {
+        \begin{minipage}{2cm}\centering
+            Calcula $\beta_c$
+        \end{minipage}
+    };
+    
+    \node [draw,
+        minimum width=3.5em,
+        minimum height=2em,
+        rounded corners=5,
+        right=1 of bytec
+    ] (fim) {Fim};
+    
+    % arrow heaven %
+    \draw[->] (inicio) -- (RGB);
+    \draw[->] (RGB) -- (RGBc);
+    \draw[->] (RGBc) -- (bytec);
+    \draw[->] (bytec) -- (fim);
+\end{tikzpicture}

@@ -1,0 +1,67 @@
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazilian]{babel}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{graphicx, subcaption} 
+    \graphicspath{{../figuras/}}
+
+\usepackage{listings}
+    \lstset{inputpath={listings/}}
+
+\usepackage{tikz}
+    \usetikzlibrary{positioning, arrows, arrows.meta, shapes.geometric}
+
+\usepackage{color}
+
+\usepackage{amsmath, amsthm, amssymb}
+  \input{ambientes}
+  \renewcommand{\geq}{\geqslant}
+  \renewcommand{\leq}{\leqslant}
+
+\renewcommand{\tt}{\ttfamily}
+\newcommand{\ecall}{{\tt ecall}}
+
+\usepackage[margin=3cm]{geometry}
+    
+\usepackage[scaled]{helvet}    
+\usepackage{titlesec} % 
+    \titleformat*{\section}{\Large\bfseries\sffamily}
+    \titleformat*{\subsection}{\large\bfseries\sffamily}
+    \titleformat*{\subsubsection}{\large\sffamily}
+ 
+\usepackage{caption} % 
+    \captionsetup{
+        labelfont={sf, bf}, 
+        textfont=it,
+        format=hang
+    }
+
+\usepackage{fancyhdr, lastpage}
+    \renewcommand{\sectionmark}[1]{%
+      \markright{\sffamily\thesection.\ #1}%
+    }
+      
+    \fancyhead{}
+    \fancyhead[RO, LE]{\rightmark}
+    \fancyfoot{}
+    \fancyfoot[RO, LE]{Organização e Arquitetura de Computadores}
+    \fancyfoot[RE, LO]{\thepage/\pageref*{LastPage}}
+      
+    \renewcommand{\headrulewidth}{0.5pt}
+    \renewcommand{\footrulewidth}{0.5pt}
+    
+    \pagestyle{fancy}
+  
+\usepackage[pdfstartview=FitH,
+            colorlinks,
+            bookmarksnumbered,
+            bookmarksopen,
+            linktocpage,
+            urlcolor=blue,
+            linkcolor=teal
+        ]{hyperref} %
+
+% não mostra avisos de badness
+\hbadness = \maxdimen
+\vbadness = \maxdimen

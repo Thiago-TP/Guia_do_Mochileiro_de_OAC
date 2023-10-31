@@ -1,0 +1,66 @@
+\begin{tikzpicture}[>=latex', thick]
+    \node [draw,
+    minimum width=3.5em,
+    minimum height=2em,
+    rounded corners=5
+    ] (inicio) at (0,0) {Início};
+    
+    \node [draw,
+    minimum height=3.25em,
+    right=1 of inicio
+    ] (novo byte) {
+        \begin{minipage}{2cm}\centering
+            Imprime\\
+            novo byte
+        \end{minipage}
+    };
+    
+    \node [draw,
+    diamond,
+    minimum height=1em,
+    right=1 of novo byte
+    ] (fim da linha) {
+        \begin{minipage}{2cm}\centering
+            Terminou\\
+            a linha?
+        \end{minipage}
+    };
+    
+    \node [draw,
+    diamond,
+    minimum height=1em,
+    right=1 of fim da linha
+    ] (sem linha) {
+        \begin{minipage}{2cm}\centering
+            Tem mais\\
+            linha?
+        \end{minipage}
+    };
+    
+    \node [draw,
+    rounded corners=5,
+    minimum width=2.5em,
+    minimum height=2em,
+    right=1 of sem linha
+    ] (fim) {Fim};
+    
+    % arrow hell
+    \draw [->] (inicio) -- (novo byte);
+    \draw [->] (novo byte) -- (fim da linha);
+    
+    \draw [->] (fim da linha) -- (sem linha)
+    node [midway, above] {sim};
+    
+    \draw [->] (sem linha) -- (fim)
+    node [midway, above] {não};
+    
+    \draw [->] 
+        (fim da linha.south) --++ (0, -0.5) -|
+        (novo byte);
+    \draw (4.5, -1.8) node {não};
+    
+    \draw [->] 
+        (sem linha.north) --++ (0, 0.5) -|
+        (novo byte);
+    \draw (6.6, 2.35) node {sim};
+\end{tikzpicture}

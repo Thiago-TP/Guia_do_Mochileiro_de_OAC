@@ -1,0 +1,82 @@
+\begin{tikzpicture}[>=latex', thick]
+    \node [draw,
+        minimum width=3.5em,
+        minimum height=2em,
+        rounded corners=5
+    ] (inicio) at (0,0) {Início};
+    
+    \node [draw,
+        minimum height=3.25em,
+        right=1 of inicio
+    ] (armazenamento) {
+        \begin{minipage}{2.75cm}\centering
+            Armazenamento
+        \end{minipage}
+    };
+    
+    \node [draw,
+        minimum height=3.25em,
+        below=1 of armazenamento
+    ] (estados) {
+        \begin{minipage}{1.5cm}\centering
+            Atualiza\\
+            estado
+        \end{minipage}
+    };
+    
+    \node [draw,
+        minimum height=3.25em,
+        right=1 of estados
+    ] (pose) {
+        \begin{minipage}{1.5cm}\centering
+            Imprime\\
+            pose
+        \end{minipage}
+    };
+    
+    \node [draw,
+        minimum height=3.25em,
+        right=1 of pose
+    ] (frame) {
+        \begin{minipage}{1.5cm}\centering
+            Troca o\\
+            frame
+        \end{minipage}
+    };
+    
+    \node [draw,
+        minimum height=3.25em,
+        above=1 of frame
+    ] (recuperação) {
+        \begin{minipage}{2cm}\centering
+            Recuperação
+        \end{minipage}
+    };
+    
+    \node [draw,
+        minimum width=3.5em,
+        minimum height=2em,
+        rounded corners=5,
+        right=1 of recuperação
+    ] (fim) {Fim};
+    
+    % arrow hell
+    \draw [->] (inicio) -- (armazenamento);
+    \draw [->] (armazenamento) -- (estados);
+    \draw [->] (estados) -- (pose);
+    \draw [->] (pose) -- (frame);
+    \draw [->] (frame) -- (recuperação);
+    \draw [->] (recuperação) -- (fim);
+    
+    % legendas de etapas (I, II, etc)
+    \draw
+        (-0.6, 0.6) node {\small I}
+        (1.5, 0.8) node {\small II}
+        (1.9, -1.4) node {\small III.1}
+        (4.6, -1.4) node {\small III.2}
+        (7.4, -1.4) node {\small III.3}
+        (7.4, 0.8) node {\small IV}
+        (10.7, .5) node {\small V}
+    ;
+    
+\end{tikzpicture}
